@@ -1,0 +1,28 @@
+{
+  "name": "giftbox",
+  "version": "0.0.1",
+  "description": "Javascript support for the Option monad",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitindhar7/giftbox.git"
+  },
+  "keywords": [
+    "giftbox",
+    "option",
+    "maybe",
+    "none",
+    "some",
+    "monad",
+    "functional"
+  ],
+  "author": "Nitin Dhar <nitindhar7@yahoo.com> (https://github.com/nitindhar7/giftbox)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nitindhar7/giftbox/issues"
+  },
+  "homepage": "https://github.com/nitindhar7/giftbox#readme"
+}
