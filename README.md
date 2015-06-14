@@ -13,8 +13,6 @@ Giftbox aims to provide a wrapper API around absent values and is highly motivat
 
 One of big source of bugs in production environments is missing data represented by nulls, undefined, empty strings, etc. Traditionally calling methods on `null` or 'empty' values causes NPE's, etc. and forces developers to create disorganized utilities with null/empty checks all over the codebase, adding further complexity.
 
-[scala-option]: http://www.scala-lang.org/api/current/index.html#scala.Option
-
 ## Using Giftbox
 
 Giftbox provides 3 simple classes to handle optional data - `Option`, `Some` & `None`. Here's how to use them:
@@ -75,10 +73,13 @@ Option(function() {
 ```
 ### Advanced Examples
 
+Coming shortly!
 
+## Contribution
 
+Please add to Giftbox via [GitHub issues][github-issues]. Would be great if any new code is submitted with tests and documentation. Lets discuss features and bugs there as well!
 
-
-
+[scala-option]: http://www.scala-lang.org/api/current/index.html#scala.Option
+[github-issues]: https://github.com/nitindhar7/giftbox/issues
 
 
