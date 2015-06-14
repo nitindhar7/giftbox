@@ -32,37 +32,26 @@ var userDetails = userFetcher('bob@example.com');
 if(Option(userDetails).isDefined()) {
 	render(userDetails);
 }
-```
 
-A more functional way:
+// A more functional form:
 
-```js
 Option(userDetails).map(function(details) {
 	render(details);
 })
 
-// improved:
+// or:
 Option(userDetails).map(render);
-```
 
-Giftbox is not only useful for wrapping returned data, but also as a return value from methods:
+// Wrap a method return value in Option:
 
-```js
 var userFetcher = function(email) {
 	return Option(userClient.findByEmail(email));
 };
 
-// improved:
+// or:
 userFetcher('bob@example.com').map(render);
 ```
 
-Note how `userFetcher` returns an `Option`, whose value is generated using `userClient.findByEmail()`. So it's totally legal to write functions wrapped with Option inline:
-
-```js
-Option(function() {
-	return userClient.findByEmail('bob@example.com');
-});
-```
 ### Advanced Examples
 
 Coming Shortly!
