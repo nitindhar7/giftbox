@@ -10,8 +10,10 @@ $ npm install giftbox
 ```js
 var Option = require('giftbox').Option;
 
-Option('hello world') // returns Some
-Option(undefined) // returns None
+Option('hello world');					// Some
+Option(undefined);						// None
+Option('hello world').get();			// 'hello world'
+Option(null).getOrElse('pied piper');	// 'pier piper'
 ```
 
 Giftbox aims to provide a wrapper API around absent values and is highly motivated by [Scala's Option][scala-option].
@@ -41,7 +43,7 @@ var userFetcher = function(email) {
 	return Option(userClient.findByEmail(email));
 };
 
-userFetcher('bob@example.com').map(render);
+userFetcher('bob@example.com').map(render).getOrElse(renderNotFound);
 ```
 
 ### Advanced Examples
