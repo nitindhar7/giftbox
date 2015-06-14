@@ -56,7 +56,7 @@ var userFetcher = function(email) {
 userFetcher('bob@example.com').map(render);
 ```
 
-Note how `userFetcher` is `Option`, whose value is generated using `userClient.findByEmail()`. So it's totally legal to write functions wrapped with Option inline:
+Note how `userFetcher` returns an `Option`, whose value is generated using `userClient.findByEmail()`. So it's totally legal to write functions wrapped with Option inline:
 
 ```js
 Option(function() {
@@ -64,6 +64,96 @@ Option(function() {
 });
 ```
 ### Advanced Examples
+
+Coming Shortly!
+
+## API
+
+Giftbox considers the following "absent" or "empty": `null`, `undefined` and `NaN`.
+
+##### isDefined
+
+Returns `true` if the `val` is not empty.
+
+```js
+Option(val).isDefined();
+```
+
+##### get
+
+Returns `val` (whether or not it's empty).
+
+```js
+Option(val).get();
+```
+
+##### getOrElse
+
+Returns `val` if it `isDefined` otherwise returns `elseval`.
+
+```js
+Option(val).getOrElse(elseVal);
+```
+
+##### orElse
+
+Returns `val` if it `isDefined` otherwise uses `alternative` as an `Option` provider.
+
+```js
+Option(val).orElse(alternative);
+```
+
+##### orNull
+
+Returns `val` if it `isDefined` otherwise returns `null`.
+
+```js
+Option(val).orNull(alternative);
+```
+
+##### map
+
+Maps `val` if it `isDefined` using the `callback` function and returns `Some(callback(val))` else returns `None`;
+
+```js
+Option(val).map(callback);
+```
+
+##### flatMap
+
+Flattens nested mapping calls over `val` if it `isDefined` using the `callback` function and returns `Some` else returns `None`;
+
+```js
+Option(val).flatMap(function(v1) {
+	return Option(modify1(v)).flatMap(function(v2) {
+		return Option(modify2(v2));
+	}
+});
+```
+
+##### filter
+
+Applies `predicate` to `val` if it `isDefined` and returns `Some(val)` if it passes and `None` if it fails.
+
+```js
+Option(val).filter(predicate);
+```
+
+##### filterNot
+
+Opposite of `filter`.
+
+```js
+Option(val).filterNot(predicate);
+```
+
+##### foreach
+
+Applies the `callback` function to `val` if it `isDefined` and doesn't return anything.
+
+```js
+Option(val).foreach(callback);
+```
 
 ## Contribution
 
