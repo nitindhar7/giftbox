@@ -34,21 +34,13 @@ if(Option(userDetails).isDefined()) {
 }
 
 // A more functional form:
-
-Option(userDetails).map(function(details) {
-	render(details);
-})
-
-// or:
 Option(userDetails).map(render);
 
 // Wrap a method return value in Option:
-
 var userFetcher = function(email) {
 	return Option(userClient.findByEmail(email));
 };
 
-// or:
 userFetcher('bob@example.com').map(render);
 ```
 
