@@ -48,7 +48,68 @@ userFetcher('bob@example.com').map(render).getOrElse(renderNotFound);
 
 ### Advanced Examples
 
-Coming Shortly!
+Building a user subscription UI
+```js
+// lets fetch a user
+userFetcher('bob@example.com');
+
+// then lets fetch their subscription record
+userFetcher('bob@example.com').map(function(user) {
+	return subscriptionFetcher(user.id); // returns Option(subscription)
+});
+
+// but what if they have no subscription?
+userFetcher('bob@example.com').map(function(user) {
+	subscriptionFetcher(user.id).getOrElse('No Subscriptions Found'); // either subscription or message
+});
+
+// ok lets render what we got
+userFetcher('bob@example.com').map(function(user) {
+	renderUI(subscriptionFetcher(user.id).getOrElse('No Subscriptions Found'));
+});
+
+// but what if there was no user?
+userFetcher('bob@example.com').map(function(user) {
+	renderUI(subscriptionFetcher(user.id).getOrElse('No Subscriptions Found'));
+}).getOrElse(
+	redirectToLoginPage();
+);
+```
+
+Finding Player Score
+```js
+var lookupPlayer = function(id) {
+	return userFetcher(id); // returns Option(user)
+};
+
+var lookupScore = function(player) {
+	return scoreFetcher(player); returns Option(number)
+};
+
+var scoreFilter = function(score) {
+	return score > 105
+};
+
+showScore(lookupPlayer(1).map(lookupScore));
+=> Some(Some(103))
+
+// we don't want to render 'Some(103)'
+showScore(lookupPlayer(1).flatMap(lookupScore));
+=> Some(103)
+
+// great, but we only want to show the score if it is above 105
+showScore(lookupPlayer(1).flatMap(lookupScore).filter(scoreFilter));
+=> None
+
+// but lets show a default value if player not found or score not found or score not above 105
+showScore(
+	lookupPlayer(1)
+		.flatMap(lookupScore)
+		.filter(scoreFilter)
+		.getOrElse('Lets start a new game here!')
+);
+=> 'Lets start a new game here!'
+```
 
 ## API
 
