@@ -201,6 +201,14 @@ Applies the `callback` function to `val` if it `isDefined` and doesn't return an
 Option(val).foreach(callback);
 ```
 
+##### match
+
+Applies `someCallback` on `val` if it `isDefined` otherwise applies `noneCallback`.
+
+```js
+Option(val).match(someCallback, noneCallback);
+```
+
 ## Contribution
 
 Please contribute to Giftbox via [GitHub issues][github-issues]. Would be great if all new code is submitted with tests and documentation. Lets discuss features and bugs there as well!

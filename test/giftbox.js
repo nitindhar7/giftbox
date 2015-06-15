@@ -17,55 +17,55 @@ exports.optionConstructor = function(test) {
     test.equal(Option(function() {
     	return 'hello world';
     }) instanceof Option, true);
-    test.equal(Option(function() {
+    test.strictEqual(Option(function() {
     	return 'hello world';
-    }).get() === 'hello world', true);
+    }).get(), 'hello world');
     test.done();
 };
 
 exports.optionGet = function(test) {
-    test.equal(Option('').get() === '', true);
-    test.equal(Option('hello').get() === 'hello', true);
-    test.equal(Option(null).get() === null, true);
-    test.equal(Option(undefined).get() === undefined, true);
-    test.equal(Option(1).get() === 1, true);
-    test.equal(isNaN(Option(NaN).get()), true);
-    test.equal(Option(false).get() === false, true);
+    test.strictEqual(Option('').get(), '');
+    test.strictEqual(Option('hello').get(), 'hello');
+    test.strictEqual(Option(null).get(), null);
+    test.strictEqual(Option(undefined).get(), undefined);
+    test.strictEqual(Option(1).get(), 1);
+    test.strictEqual(isNaN(Option(NaN).get()), true);
+    test.strictEqual(Option(false).get(), false);
     var arr = [];
-    test.equal(Option(arr).get() === arr, true);
+    test.strictEqual(Option(arr).get(), arr);
     var obj = {};
-    test.equal(Option(obj).get() === obj, true);
+    test.strictEqual(Option(obj).get(), obj);
     test.done();
 };
 
 exports.optionGetOrElse = function(test) {
-    test.equal(Option('').getOrElse('hello') === '', true);
-    test.equal(Option('hello').getOrElse('world') === 'hello', true);
-    test.equal(Option(null).getOrElse('hello') === 'hello', true);
-    test.equal(Option(undefined).getOrElse('hello') === 'hello', true);
-    test.equal(Option(1).getOrElse(2) === 1, true);
-    test.equal(Option(NaN).getOrElse(1) === 1, true);
-    test.equal(Option(false).getOrElse(true) === false, true);
+    test.strictEqual(Option('').getOrElse('hello'), '');
+    test.strictEqual(Option('hello').getOrElse('world'), 'hello');
+    test.strictEqual(Option(null).getOrElse('hello'), 'hello');
+    test.strictEqual(Option(undefined).getOrElse('hello'), 'hello');
+    test.strictEqual(Option(1).getOrElse(2), 1);
+    test.strictEqual(Option(NaN).getOrElse(1), 1);
+    test.strictEqual(Option(false).getOrElse(true), false);
     var arr = [];
     var elseArr = ['hello'];
-    test.equal(Option(arr).getOrElse(elseArr) === arr, true);
+    test.strictEqual(Option(arr).getOrElse(elseArr), arr);
     var obj = {};
     var elseObj = {};
-    test.equal(Option(obj).getOrElse(elseObj) === obj, true);
+    test.strictEqual(Option(obj).getOrElse(elseObj), obj);
     test.done();
 };
 
 exports.optionOrElse = function(test) {
 	var elseOption = Option('hello');
-	test.equal(Option(null).orElse(elseOption) === elseOption, true);
+	test.strictEqual(Option(null).orElse(elseOption), elseOption);
 	var option = Option(123);
-	test.equal(option.orElse(elseOption) === option, true);
+	test.strictEqual(option.orElse(elseOption), option);
 	test.done();
 };
 
 exports.optionOrNull = function(test) {
-	test.equal(Option(null).orNull() === null, true);
-	test.equal(Option('hello').orNull() === 'hello', true);
+	test.strictEqual(Option(null).orNull(), null);
+	test.strictEqual(Option('hello').orNull(), 'hello');
 	test.done();
 };
 
@@ -76,9 +76,9 @@ exports.optionMap = function(test) {
 	test.equal(Option('hello').map(function(val) {
 		return val.toUpperCase();
 	}) instanceof Some, true);
-	test.equal(Option('hello').map(function(val) {
+	test.strictEqual(Option('hello').map(function(val) {
 		return val.toUpperCase();
-	}).get() === 'HELLO', true);
+	}).get(), 'HELLO');
 	test.done();
 };
 
@@ -86,14 +86,14 @@ exports.optionFlatMap = function(test) {
 	test.equal(Option('hello').flatMap(function(val) {
 		return Option(val);
 	}) instanceof Option, true);
-	test.equal(Option('hello').flatMap(function(val) {
+	test.strictEqual(Option('hello').flatMap(function(val) {
 		return Option(val.toUpperCase());
-	}).get() === 'HELLO', true);
-	test.equal(Option('hello').flatMap(function(val) {
+	}).get(), 'HELLO');
+	test.strictEqual(Option('hello').flatMap(function(val) {
 		return Option(val.toUpperCase()).flatMap(function(innerval) {
 			return Option(innerval + ' WORLD!');
 		});
-	}).get() === 'HELLO WORLD!', true);
+	}).get(), 'HELLO WORLD!');
 	test.equal(Option(null).flatMap(function(val) {
 		return Option(val);
 	}) instanceof None, true);
@@ -105,12 +105,12 @@ exports.optionFilter = function(test) {
     test.equal(opt.filter(function(val) {
     	return val === 'hello';
     }) instanceof Some, true);
-    test.equal(opt.get() === 'hello', true);
+    test.strictEqual(opt.get(), 'hello');
     var absent = Option(null);
     test.equal(absent.filter(function(val) {
     	return val === 'hello';
     }) instanceof None, true);
-    test.equals(absent.getOrElse('world') === 'world', true);
+    test.strictEqual(absent.getOrElse('world'), 'world');
     test.done();
 };
 
@@ -119,14 +119,14 @@ exports.optionFilterNot = function(test) {
     test.equal(opt.filterNot(function(val) {
     	return val === 'hello';
     }) instanceof None, true);
-    test.equal(opt.filterNot(function(val) {
+    test.strictEqual(opt.filterNot(function(val) {
     	return val === 'hello';
-    }).get() === undefined, true);
+    }).get(), undefined);
     var absent = Option(null);
     test.equal(absent.filter(function(val) {
     	return val === 'hello';
     }) instanceof None, true);
-    test.equals(absent.getOrElse('world') === 'world', true);
+    test.strictEqual(absent.getOrElse('world'), 'world');
     test.done();
 };
 
@@ -135,10 +135,26 @@ exports.optionForeach = function(test) {
 	Option('hello').foreach(function(val) {
 		withPrefix = val + withPrefix;
 	});
-	test.equals(withPrefix === 'hello world', true);
+	test.strictEqual(withPrefix, 'hello world');
 	Option(null).foreach(function(val) {
 		withPrefix = val + withPrefix;
 	});
-	test.equals(withPrefix === 'hello world', true);
+	test.strictEqual(withPrefix, 'hello world');
     test.done();
+};
+
+exports.optionMatch = function(test) {
+	Option('hello').match(function(val) {
+		test.strictEqual(val, 'hello');
+	}, function() {
+		// should never run. if it does, it rightly failed!
+		test.equal(true, false);
+	});
+	Option(undefined).match(function(val) {
+		// should never run. if it does, it rightly failed!
+		test.equal(true, false);
+	}, function() {
+		test.equal(true, true);
+	});
+	test.done();
 };
