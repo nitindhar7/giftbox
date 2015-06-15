@@ -1,6 +1,6 @@
 {
   "name": "giftbox",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Javascript support for the Option monad",
   "main": "index.js",
   "scripts": {
