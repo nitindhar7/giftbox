@@ -102,7 +102,8 @@ showScore(lookupPlayer(1).flatMap(lookupScore));
 showScore(lookupPlayer(1).flatMap(lookupScore).filter(scoreFilter));
 => None
 
-// but lets show a default value if player not found or score not found or score not above 105
+// but lets show a default value if player not found or 
+// score not found or score not above 105
 showScore(
 	lookupPlayer(1)
 		.flatMap(lookupScore)
