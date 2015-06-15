@@ -84,7 +84,7 @@ var lookupPlayer = function(id) {
 };
 
 var lookupScore = function(player) {
-	return scoreFetcher(player); returns Option(number)
+	return scoreFetcher(player); // returns Option(number)
 };
 
 var scoreFilter = function(score) {
