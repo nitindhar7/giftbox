@@ -60,7 +60,8 @@ userFetcher('bob@example.com').map(function(user) {
 
 // but what if they have no subscription?
 userFetcher('bob@example.com').map(function(user) {
-	subscriptionFetcher(user.id).getOrElse('No Subscriptions Found'); // either subscription or message
+	// returns either subscription or message
+	subscriptionFetcher(user.id).getOrElse('No Subscriptions Found');
 });
 
 // ok lets render what we got
