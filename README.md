@@ -209,6 +209,15 @@ Applies `someCallback` on `val` if it `isDefined` otherwise applies `noneCallbac
 Option(val).match(someCallback, noneCallback);
 ```
 
+##### collect
+
+Applies `predicate` on `val` if it `isDefined` and maps `val` using `callback`.
+
+```js
+Option(val).collect(predicate, callback);
+```
+
+
 ## Contribution
 
 Please contribute to Giftbox via [GitHub issues][github-issues]. Would be great if all new code is submitted with tests and documentation. Lets discuss features and bugs there as well!

@@ -158,3 +158,22 @@ exports.optionMatch = function(test) {
 	});
 	test.done();
 };
+
+exports.optionCollect = function(test) {
+	test.strictEqual(Option('hello').collect(function(val) {
+		return val === 'hello';
+	}, function(val) {
+		return val.toUpperCase();
+	}).get(), 'HELLO');
+	test.strictEqual(Option('world').collect(function(val) {
+		return val === 'hello';
+	}, function(val) {
+		return val.toUpperCase();
+	}) instanceof None, true);
+	test.strictEqual(Option(null).collect(function(val) {
+		return val === 'hello';
+	}, function(val) {
+		return val.toUpperCase();
+	}) instanceof None, true);
+	test.done();
+};
