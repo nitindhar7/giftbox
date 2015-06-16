@@ -177,3 +177,11 @@ exports.optionCollect = function(test) {
   }) instanceof None, true);
   test.done();
 };
+
+exports.optionToArray = function(test) {
+  test.strictEqual(Option('hello').toArray().length, 1);
+  test.strictEqual(Option('hello').toArray()[0], 'hello');
+  test.strictEqual(Option(null).toArray().length, 0);
+  test.strictEqual(Option(undefined).toArray().length, 0);
+  test.done();
+};

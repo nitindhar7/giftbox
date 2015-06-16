@@ -217,6 +217,14 @@ Applies `predicate` on `val` if it `isDefined` and maps `val` using `callback`.
 Option(val).collect(predicate, callback);
 ```
 
+##### toArray
+
+Transforms option to an array.
+
+```js
+Option(val).toArray();
+```
+
 
 ## Contribution
 
