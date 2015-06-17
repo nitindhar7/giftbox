@@ -1,8 +1,8 @@
 {
   "name": "giftbox",
   "version": "0.5.0",
-  "description": "Javascript support for the Option monad",
-  "main": "index.js",
+  "description": "A lightweight Javascript library for the Option monad",
+  "main": "lib/giftbox",
   "scripts": {
     "test": "nodeunit test"
   },
