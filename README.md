@@ -1,4 +1,4 @@
-giftbox [![Build Status](https://travis-ci.org/nitindhar7/giftbox.png)](https://travis-ci.org/nitindhar7/giftbox)
+![Giftbox](https://www.dropbox.com/s/ttz5iretc2q0tn0/Screen%20Shot%202015-06-17%20at%2012.59.07%20AM.png?dl=0) giftbox [![Build Status](https://travis-ci.org/nitindhar7/giftbox.png)](https://travis-ci.org/nitindhar7/giftbox)
 =======
 
 A lightweight Javascript library for the Option monad. Maybe there's something in it, maybe there isn't ;)
