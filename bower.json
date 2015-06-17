@@ -1,0 +1,36 @@
+{
+  "name": "giftbox",
+  "version": "0.5.1",
+  "homepage": "https://github.com/nitindhar7/giftbox",
+  "authors": [
+    "Nitin Dhar <nitindhar7@yahoo.com>"
+  ],
+  "description": "A lightweight Javascript library for the Option monad",
+  "main": "lib/giftbox",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "giftbox",
+    "option",
+    "optionjs",
+    "nodejs",
+    "node",
+    "javascript",
+    "maybe",
+    "none",
+    "some",
+    "monad",
+    "functional"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

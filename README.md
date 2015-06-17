@@ -4,7 +4,10 @@ giftbox [![Build Status](https://travis-ci.org/nitindhar7/giftbox.png)](https://
 A lightweight Javascript library for the Option monad. Maybe there's something in it, maybe there isn't ;)
 
 ```bash
-$ npm install giftbox
+$ npm install giftbox -g
+
+// with Bower
+$ bower install giftbox
 ```
 
 ```js
